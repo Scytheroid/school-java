@@ -15,7 +15,8 @@ public class DenVRoce {
             dny += 28; 
         }
 
-        else if ((mesic == 1)  || (mesic == 3)  ||
+        else if ((mesic == 1)  || 
+                (mesic == 3)  ||
                 (mesic == 5)  ||
                 (mesic == 7)  ||
                 (mesic == 8)  ||
