@@ -8,11 +8,11 @@ public class DenVRoce {
         int dny = 0;
         if (mesic == 0) { return dny; }
         if ((mesic == 2) && (rok % 4 == 0)) {
-            dny += 28; 
+            dny += 29; 
         }
 
         else if (mesic == 2) {
-            dny += 29; 
+            dny += 28; 
         }
 
         else if ((mesic == 1)  || (mesic == 3)  ||
