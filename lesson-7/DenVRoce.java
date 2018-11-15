@@ -3,36 +3,31 @@ import javax.lang.model.util.ElementScanner6;
 /* DenVRoce spočítá rekurzivně počet dní v předešlých uběhlých měsících
    DenVRoce rozlišuje přestupný rok
 */
+
 public class DenVRoce {
-    public static int dnuVMesici(int mesic, int rok) {
-        int dny = 0;
-        if (mesic == 0) { return dny; }
-        if ((mesic == 2) && (rok % 4 == 0)) {
-            dny += 29; 
-        }
+    public static boolean prestupnyRok(int rok, int mesic) {
+       if (rok % 400 == 0) {return true;}
+       if (rok % 100 == 0) {return false;}
+       return rok % 4 == 0;
+    }
+          
 
-        else if (mesic == 2) {
-            dny += 28; 
-        }
+    public static int dnuVMesici(int rok, int mesic) {
+        int unor = prestupnyRok ? 29 : 28;
+        awh.IntList pocet_dni = awh.IntList.create(
+           0, 31, unor, 31, 30, 31, 30, 31,
+           31, 30, 31, 30, 31);
+       int vysledek;
+       
+       for (int i, i < mesic, i++) {
+          vysledek += pocet_dni[i];
+       }
+        
 
-        else if (
-                (mesic == 1)  || 
-                (mesic == 3)  ||
-                (mesic == 5)  ||
-                (mesic == 7)  ||
-                (mesic == 8)  ||
-                (mesic == 10) ||
-                (mesic == 12)
-                )
-        {
-            dny += 31;
-        }
-
-        else {dny += 30;}
-
-        return (dny + dnuVMesici(mesic - 1, rok));
+       return vysledek;
 
     }
+   // Rest is yet to be done
 
 /*
     Tělo programu načte datum z jednoho řádku a poté jednotlivá čísla
