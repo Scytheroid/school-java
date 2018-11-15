@@ -4,7 +4,7 @@ import javax.lang.model.util.ElementScanner6;
    DenVRoce rozlišuje přestupný rok
 */
 public class DenVRoce {
-    public static int DenVMesici(int mesic, int rok) {
+    public static int dnuVMesici(int mesic, int rok) {
         int dny = 0;
         if (mesic == 0) { return dny; }
         if ((mesic == 2) && (rok % 4 == 0)) {
@@ -15,20 +15,22 @@ public class DenVRoce {
             dny += 28; 
         }
 
-        else if ((mesic == 1)  || 
+        else if (
+                (mesic == 1)  || 
                 (mesic == 3)  ||
                 (mesic == 5)  ||
                 (mesic == 7)  ||
                 (mesic == 8)  ||
                 (mesic == 10) ||
-                (mesic == 12))
+                (mesic == 12)
+                )
         {
             dny += 31;
         }
 
         else {dny += 30;}
 
-        return (dny + DenVMesici(mesic - 1, rok));
+        return (dny + dnuVMesici(mesic - 1, rok));
 
     }
 
@@ -46,8 +48,8 @@ public class DenVRoce {
         System.out.printf("%d", 
             (
                 // Počet celých uběhlých měsíců je o 1 menší
-                DenVMesici((datum.get(1) - 1), datum.get(0))
-                + datum.get(2)
+                dnuVMesici((datum.get(1) - 1), datum.get(0))
+                 + datum.get(2)
                 // Součet počtu dní v uběhlých měsících a počtu uběhlých dní
                 //      aktuálního měsíce.
             )
